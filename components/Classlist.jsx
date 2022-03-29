@@ -1,0 +1,31 @@
+import style from '../styles/Classlist.module.css'
+import PizzaCard from './PizzaCard'
+
+
+function Classlist() {
+  return (
+    <div className={style.container}>
+        <h1 className={style.title}>THE BEST PIZZA IN TOWN</h1>
+        <p className={style.desc}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut blandit arcu
+        in pretium molestie. Interdum et malesuada fames acme. Lorem ipsum dolor
+        sit amet, consectetur adipiscing elit.
+        </p>
+
+        <div className={style.wrapper}>
+            <PizzaCard/>
+            <PizzaCard/>
+            <PizzaCard/>
+            <PizzaCard/>
+            <PizzaCard/>
+            <PizzaCard/>
+            <PizzaCard/>
+            <PizzaCard/>
+            <PizzaCard/>
+            <PizzaCard/>
+        </div>
+    </div>
+  )
+}
+
+export default Classlist
