@@ -109,3 +109,16 @@
     border: 2px solid #d1411e;
     right: 0;
 }
+
+/* mobile */
+
+@media screen and (max-width:640px) {
+    .container{
+        padding-top: 4%;
+        padding-right: 8%;
+    }
+
+    .cont2{
+        display: none;  
+    }
+}

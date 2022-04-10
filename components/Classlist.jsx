@@ -21,8 +21,6 @@ function Classlist() {
             <PizzaCard/>
             <PizzaCard/>
             <PizzaCard/>
-            <PizzaCard/>
-            <PizzaCard/>
         </div>
     </div>
   )

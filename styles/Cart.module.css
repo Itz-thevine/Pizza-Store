@@ -1,0 +1,160 @@
+.container{
+    padding: 3% 4%;
+    display: flex;
+    margin-top: 100px;
+    min-height: calc(100vh - 100px);
+}
+
+.left{
+    flex: 2;    
+}
+
+.table{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-spacing: 20px;
+}
+
+.trTitle{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.row{
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 2% 0;
+}
+
+.item{
+    font-weight: 600;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    margin: 0px; 
+    width: 100px;
+}
+.item1{
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    margin: 0px; 
+    width: 100px;
+}
+
+.imgContainer{
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.extras{
+}
+
+.right{
+    flex: 1;
+}
+
+.cart{
+    background-color:rgb(37, 37, 37);
+    padding: 10%;
+}
+
+.cartTitle{
+    color:white;
+    margin-bottom: 20px;
+}
+
+.sub{
+    color: white;
+    font-weight: 500;
+    margin: 0 0 0 0;
+}
+
+.subTotal, .discount, .cartTotal {
+    margin-left: 10px;
+    font-weight: 400;
+}
+
+.cartBtn{
+    width: 100%;
+    color: #d1411e;
+    text-align: center;
+    font-weight: 600;
+    padding: 3% 0;
+
+    margin-top: 10%;
+}
+
+@media screen and (max-width:640px){
+    .container{
+        display: flex;
+        flex-direction: column;
+        padding: 5% 5%;
+    }
+    .left{
+        flex: 1;
+        width: 100%;
+    }
+
+    .table{
+        justify-content: center;
+        align-items: center;
+    }
+
+    .trTitle{
+        display: none;
+    }
+    .row{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 70%;
+        margin-bottom: 20px;
+    }
+    .item1{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: auto;
+    }
+    .item1:nth-child(1){
+        width: auto;
+    }
+        .item1:nth-child(3){
+        width: 100vw;
+        justify-content: center;
+        align-items: center;
+    }
+    .imgContainer{
+        height: 150px;
+        width: 150px;
+    }
+
+    .extras{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center ;
+    }
+    .name, .total{
+        font-size: 24px;
+        font-weight: bolder;
+    }
+    .price::before{
+        content: 'Price: ';
+        font-weight: bolder;
+    }
+    .quantity::before{
+        content: 'Quantity: ';
+        font-weight: bold;
+    }
+    .total::before{
+        content: 'Total: ';
+
+    }
+}

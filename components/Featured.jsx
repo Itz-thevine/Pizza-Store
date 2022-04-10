@@ -33,7 +33,7 @@ function Featured() {
                 {
                     images.map((image, i)=>(
                         <div className={styles.imgContainer} key={i}>
-                            <Image src={image} alt='featured image' layout='fill' objectFit='contain'/>
+                            <Image src={image} className={styles.hp} alt='featured image' layout='fill' objectFit='contain'/>
                         </div>
                     ))
                 }

@@ -1,0 +1,149 @@
+.container{
+    padding: 3% 4%;
+    display: flex;
+    margin-top: 100px;
+    min-height: calc(100vh - 100px);
+}
+
+.left{
+    flex: 2;    
+}
+
+.table{
+    width: 100%;
+    text-align: left;
+    margin-bottom: 50px;
+}
+
+.wrapper{
+    display: flex;
+    gap: 18%;
+}
+
+
+.done{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inProgress{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: inProgress 1s ease infinite alternate;
+}
+
+@keyframes inProgress {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.unDone{
+    opacity: 0.3;
+}
+
+.unDone .img, .inProgress .img{
+    display: none;
+}
+
+.status{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.img{
+    height: 30px;
+    width: 30px;
+    position: relative;
+}
+
+.row{
+    
+}
+
+.right{
+    flex: 1;
+}
+
+.cart{
+    background-color:rgb(37, 37, 37);
+    padding: 10%;
+}
+
+.cartTitle{
+    color:white;
+    margin-bottom: 20px;
+}
+
+.sub{
+    color: white;
+    font-weight: 500;
+    margin: 0 0 0 0;
+}
+
+.subTotal, .discount, .cartTotal {
+    margin-left: 10px;
+    font-weight: 400;
+}
+
+.cartBtn{
+    width: 100%;
+    color: teal;
+    text-align: center;
+    font-weight: 600;
+    padding: 3% 0;
+    margin-top: 10%;
+    background-color: white;
+    cursor: not-allowed;
+}
+
+@media screen and (max-width:640px) {
+    .container{
+        flex-direction: column;
+    }
+    .trTitle{
+        display: none;
+    }
+    .row{
+        padding: 0 2%;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: auto;
+    }
+    .item1{
+        width: auto;
+        font-size: large;
+    }
+    .id::before{
+        content: 'Order ID: ';
+        font-weight: bolder;
+    }
+    .name::before{
+        content: 'Customer: ';
+        font-weight: bolder;
+    }
+    .address::before{
+        content: 'Address: ';
+        font-weight: bold;
+    }
+    .total::before{
+        content: 'Total: ';
+        font-weight: bolder;
+    }
+
+    .wrapper{
+        flex-direction: column;
+        margin-bottom: 7%;
+    }
+}

@@ -29,3 +29,16 @@
     position: relative;
     display: flex;
 }
+
+@media screen and (max-width:640px){
+    .nav{
+        font-size: 60px;
+    }
+    .container{
+        height: calc(70vh - 100px);
+    }
+    
+   .hp{
+       padding: 38px !important;
+   }
+}

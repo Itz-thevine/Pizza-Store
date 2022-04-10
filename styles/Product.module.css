@@ -1,0 +1,162 @@
+.container{
+    padding: 1% 4%;
+    display: flex;
+    margin-top: 100px;
+    height: calc(100vh - 100px);
+    justify-content: center;
+    align-items: center;
+}
+
+.left{
+    flex: 1;
+    position: relative;
+    height: 450px;
+    width: 450px;
+    
+}
+
+.right{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.size{
+    position: relative;
+}
+
+.price{
+    font-size: 24px;
+    color: #d1411e;
+    border-bottom: 1px solid #d1411e;
+    font-weight: 500;
+}
+
+.desc{
+    color: #777;
+     font-weight: 500;
+}
+
+.sizes{
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+}
+
+.size:nth-child(1){
+    position: relative;
+    height: 35px ;
+    width: 35px;
+    cursor: pointer;
+}
+
+.size:nth-child(2){
+    position: relative;
+    height: 50px ;
+    width: 50px;
+    cursor: pointer;
+}
+
+.size:nth-child(3){
+    position: relative;
+    height: 75px;
+    width: 75px;
+    cursor: pointer;
+}
+
+.number{
+    background-color: teal;
+    position: absolute;
+    z-index: 3;
+    color: white;
+    padding: 5% 15%;
+    border-radius: 10px;
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: -20px;
+}
+
+.ingredients{
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+}
+
+.option{
+    font-weight: 600;
+}
+
+.add{
+    margin-top: 25px;
+    margin-bottom: 40px;
+}
+
+.quantity{
+    width: 50px;
+    height: 35px;
+    margin-right: 20px;
+}
+
+
+.quantity::-webkit-inner-spin-button, 
+.quantity::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+}
+
+.quantity {
+  -moz-appearance: textfield;
+}
+
+.button{
+    background-color: #d1411e;
+    color: white;
+    padding: 1.5% 2%;
+    border: none;
+}
+
+@media screen and (max-width:640px) {
+    .container{
+        display: flex;
+        flex-direction: column;
+        margin-top: 25%;
+        text-align: center;
+        height: auto;
+        padding: 0 7%;
+    }
+    
+    .left{
+        flex: none;
+        position: relative;
+        height: 50vw;
+        width: 50vw;
+    }
+    .sizes{
+        width: 100%;
+        justify-content: space-around;
+        padding: 3px 15px 0 15px;
+    }
+    .ingredients{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 0 40px;
+        /* font-size: 18px; */
+        
+    }
+    .option{
+        margin: 7px;
+        display: flex;
+        padding: 0;
+    }
+    .checkbox{
+        width: 18px;
+        height: 18px;
+        border-radius: 0px;
+    }
+    
+
+}
