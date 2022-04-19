@@ -45,6 +45,11 @@
     width: 100px;
 }
 
+.item1:nth-child(3){
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .imgContainer{
     position: relative;
     width: 100px;
@@ -52,6 +57,7 @@
 }
 
 .extras{
+    margin-right: 5px;
 }
 
 .right{

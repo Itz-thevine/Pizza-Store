@@ -3,9 +3,15 @@ import style from '../styles/Navbar.module.css'
 import * as AiIcons from 'react-icons/ai'
 import * as BsIcons from 'react-icons/bs'
 import Image from 'next/image'
+import { useSelector } from 'react-redux'
+import Link from 'next/link'
+
 
 function Navbar() {
-  return (
+
+    const quantity = useSelector(state=>state.cart.quantity)
+
+    return (
         <div className={style.container}>
             <div className={style.cont1}>
                 <div className={style.circle}>
@@ -27,14 +33,16 @@ function Navbar() {
                     <li className={style.ulItems}>Contact</li>
                 </ul>
             </div>     
-            <div className={style.cont3}>
-                <div className={style.cart}>
-                    <BsIcons.BsCart2 />
-                </div>
-                <div className={style.circleSm}>
-                    <p style={{color:'#d1411e', margin: '0px 0 0 0 0px'}}>2</p>
-                </div>
-            </div>     
+            <Link href='/cart' passHref>
+                <div className={style.cont3}>
+                    <div className={style.cart}>
+                        <BsIcons.BsCart2 />
+                    </div>
+                    <div className={style.circleSm}>
+                        <p style={{color:'#d1411e', margin: '0px 0 0 0 0px'}}>{quantity}</p>
+                    </div>
+                </div>     
+            </Link>
         </div>
   )
 }

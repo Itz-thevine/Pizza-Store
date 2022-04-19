@@ -2,7 +2,7 @@ import style from '../styles/Classlist.module.css'
 import PizzaCard from './PizzaCard'
 
 
-function Classlist() {
+function Classlist({pizzaList}) {
   return (
     <div className={style.container}>
         <h1 className={style.title}>THE BEST PIZZA IN TOWN</h1>
@@ -13,14 +13,11 @@ function Classlist() {
         </p>
 
         <div className={style.wrapper}>
-            <PizzaCard/>
-            <PizzaCard/>
-            <PizzaCard/>
-            <PizzaCard/>
-            <PizzaCard/>
-            <PizzaCard/>
-            <PizzaCard/>
-            <PizzaCard/>
+          {
+            pizzaList.map((pizza)=>(
+              <PizzaCard key={pizza._id} pizza={pizza}/>
+            ))
+          }
         </div>
     </div>
   )
