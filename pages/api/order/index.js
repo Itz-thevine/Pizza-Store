@@ -1,16 +1,16 @@
 import dbConnect from '../../../utils/mongoDb';
 import Order from '../../../models/Order';
 
-const handler = async (res, req) => {
+export default async function handler (req, res) {
 
     const {method} = req  
 
-    await dbConnect();
+    dbConnect();
 
     if (method === "GET") {
       try{
-        const orders = await Order.find();
-        res.status(200).json(orders)
+        const order = await Order.find();
+        res.status(200).json(order)
       }catch(err){
         res.status(500).json(err)
       }
@@ -27,4 +27,3 @@ const handler = async (res, req) => {
 
 }
 
-export default handler;

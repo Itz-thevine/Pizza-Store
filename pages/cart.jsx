@@ -28,11 +28,11 @@ function Cart() {
     const createOrder = async (data)=>{
         try{
             // console.log(data)
-            const res = axios.post("http://localhost:3005/api/order", data); 
-            // res.status === 201 && router.push("/order/" + res.data._id);
-            // dispatch(reset())
-            
-            console.log('res', res)
+            const res = await axios.post("http://localhost:3005/api/order", data); 
+            res.status === 201 && router.push(`/order/${res.data._id}`);
+            dispatch(reset())
+
+            console.log('res', res)     
         }catch(err){
             console.log('err', err)
         }
@@ -85,7 +85,6 @@ function Cart() {
                             // console.log(details)
                             const shipping = details.purchase_units[0].shipping;
                             createOrder({
-                                prdId: id, 
                                 customer: shipping.name.full_name, 
                                 address: shipping.address.address_line_1, 
                                 total: cart.total, 
