@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const OrderSchema = new mongoose.Schema({
-    orderId: {
+    customer: {
         type:String,
         required: true,
         maxlength: 60,

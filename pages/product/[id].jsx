@@ -8,7 +8,7 @@ import { addProduct } from '../../redux/cartSlice';
 
 function Product({pizza}) {
 
-  console.log(pizza)
+  // console.log(pizza)
 
   const [size, setSize] = useState(0);
   const [price, setPrice] = useState(pizza.prices[0]);
