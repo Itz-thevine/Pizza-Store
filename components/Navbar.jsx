@@ -24,7 +24,9 @@ function Navbar() {
             </div>     
             <div className={style.cont2}>
                 <ul className={style.ul}>
-                    <li className={style.ulItems}>Home</li>
+                    <Link href='/' passHref>
+                        <li className={style.ulItems}>Home</li>
+                    </Link>
                     <li className={style.ulItems}>Products</li>
                     <li className={style.ulItems}>Menu</li>
                     <Image src='/imgs/logo.png' height='40' width='120'  style={{cursor: 'pointer'}}/>

@@ -1,4 +1,4 @@
-import dbConnect from "../../../util/mongoDb";
+import dbConnect from "../../../utils/mongoDb";
 import Order from "../../../models/Order";
 
 const handler = async (req, res) => {
@@ -7,24 +7,24 @@ const handler = async (req, res) => {
     query: { id },
   } = req;
 
-  await dbConnect();
+  dbConnect();
 
   if (method === "GET") {
-    try {
+    try{
       const order = await Order.findById(id);
-      res.status(200).json(order);
-    } catch (err) {
-      res.status(500).json(err);
+      res.status(200).json(order)
+    }catch(error){
+      res.status(500).json(error);
     }
   }
   if (method === "PUT") {
-    try {
+    try{
       const order = await Order.findByIdAndUpdate(id, req.body, {
-        new: true,
+        new:true
       });
-      res.status(200).json(order);
-    } catch (err) {
-      res.status(500).json(err);
+      res.status(200).json(order)
+    }catch(error){
+      res.status(500).json(error);
     }
   }
   if (method === "DELETE") {
