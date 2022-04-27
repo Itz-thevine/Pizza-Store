@@ -25,8 +25,19 @@ export const Add = ({setClose}) => {
   const handleExtra = (e) => {
     setExtraOptions((prev) => [...prev, extra]);
 
-    console.log(extraOptions)
   };
+
+  const handleCreate = async () => {
+    const data= new FormData();
+    data.append('file', file);
+    data.append("upload_preset", "upload")
+    try {
+        const uploadRes= await axios.post('https://api.cloudinary.com/v1_1/thevine/image/upload', data) 
+        console.log(uploadRes.data)
+    } catch (error) {
+        console.log(error)
+    }
+  }
 
   return (
     <div className={styles.container}>
@@ -92,6 +103,9 @@ export const Add = ({setClose}) => {
                     ))}
                 </div>
             </div>
+            <button className={styles.addButton} onClick={handleCreate}>
+                Create
+            </button>
         </div>
     </div>
   )
