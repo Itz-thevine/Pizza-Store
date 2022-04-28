@@ -33,7 +33,17 @@ export const Add = ({setClose}) => {
     data.append("upload_preset", "upload")
     try {
         const uploadRes= await axios.post('https://api.cloudinary.com/v1_1/thevine/image/upload', data) 
-        console.log(uploadRes.data)
+
+        const {url} = uploadRes.data;
+        const newProduct = {
+            title,
+            desc,
+            extraOptions,
+            img: url,
+        }
+
+        await axios.post('http://localhost:3005/api/products', newProduct)
+        setClose(true)
     } catch (error) {
         console.log(error)
     }
