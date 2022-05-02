@@ -4,6 +4,8 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { addProduct } from '../../redux/cartSlice';
+import {useRouter} from 'next/router'
+
 
 
 function Product({pizza}) {
@@ -15,6 +17,9 @@ function Product({pizza}) {
   const [extra, setExtra] = useState([]);
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
+  
+  const router = useRouter();
+  console.log(router.asPath)
 
   const changePrice = (number) => {
       setPrice(price + number)
