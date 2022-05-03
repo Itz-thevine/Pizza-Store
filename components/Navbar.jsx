@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 import Link from 'next/link'
 
 
-function Navbar() {
+const Navbar = React.forwardRef(() => {
 
     const quantity = useSelector(state=>state.cart.quantity)
 
@@ -47,6 +47,6 @@ function Navbar() {
             </Link>
         </div>
   )
-}
+})
 
 export default Navbar
