@@ -3,7 +3,7 @@ import styles from '../../styles/admin.module.css'
 import Image from 'next/image'
 import axios from 'axios'
 
-function Index({order, product}) {
+function Index({order, product, host}) {
     const [pizzaList, setPizzaList] = useState(product);
     const [orderList, setOrderList] = useState(order);
     const status = ['Preparing', 'on the way', 'delivered']
@@ -11,7 +11,7 @@ function Index({order, product}) {
     
     const handleDelete = async (id)=>{
         try {
-            await axios.delete("http://localhost:3005/api/products/"+id)
+            await axios.delete(`http://${host}/api/products/`+id)
             setPizzaList(pizzaList.filter(pizza => pizza._id !== id))
         } catch (error) {
             console.log(error)
@@ -23,7 +23,7 @@ function Index({order, product}) {
         const currentStatus= item.status;
 
         try{
-            const res = await axios.put('http://localhost:3005/api/order/'+id,  {status: currentStatus+1})
+            const res = await axios.put(`http://${host}/api/order/`+id,  {status: currentStatus+1})
 
             setOrderList([
                 res.data,
@@ -115,7 +115,9 @@ function Index({order, product}) {
 }
 
 export const getServerSideProps = async (ctx) =>{
-    const mycookie = ctx.req?.cookies || '';
+    const {req} = ctx
+
+    const mycookie = req?.cookies || '';
 
     if(mycookie.token !== process.env.TOKEN){
         return{
@@ -126,13 +128,19 @@ export const getServerSideProps = async (ctx) =>{
         }
     }
 
-    const productRes = await axios.get('http://localhost:3005/api/products');
-    const orderRes = await axios.get('http://localhost:3005/api/order');
+    let host
+    if(req){
+        host = req.headers.host
+    }
+
+    const productRes = await axios.get(`http://${host}/api/products`);
+    const orderRes = await axios.get(`http://${host}/api/order`);
 
     return{
         props: {
             order: orderRes.data,
             product: productRes.data,
+            host,
         }
     }
 }

@@ -3,7 +3,7 @@ import Image from 'next/image'
 import axios from 'axios';
 
 function Order({order}) {
-    console.log(order)
+    // console.log(order)
 
     const status = order.status;
 
@@ -89,10 +89,17 @@ function Order({order}) {
   )
 }
 
-export const getServerSideProps = async ({params})=> {
-    const res = await axios.get(`http://localhost:3005/api/order/${params.id}`);
+export const getServerSideProps = async (ctx)=> {
+    const {params, req, res, asPath} = ctx
+
+    let host = '';
+    if(req){
+        host = req.headers.host
+    }
+
+    const reqs = await axios.get(`http://${host}/api/order/${params.id}`);
     return{
-        props: {order: res.data},
+        props: {order: reqs.data},
     }
 }
 

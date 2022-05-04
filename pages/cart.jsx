@@ -15,7 +15,7 @@ import OrderDetail from '../components/OrderDetail';
 
 
 
-function Cart() {
+function Cart({host}) {
     const cart = useSelector(state=> state.cart);
     const [open, setOpen] = useState(false);
     const [cash, setCash] = useState(false);
@@ -27,10 +27,11 @@ function Cart() {
     const style = {"layout":"vertical"};
 
     
+
     const createOrder = async (data)=>{
         try{
             // console.log(data)
-            const res = await axios.post("http://localhost:3005/api/order", data); 
+            const res = await axios.post(`http://${host}/api/order`, data); 
             res.status === 201 && router.push(`/order/${res.data._id}`);
             dispatch(reset())
 
@@ -203,3 +204,16 @@ function Cart() {
 }
 
 export default Cart
+
+export const getServerSideProps = async ({req}) =>{
+    let host
+    if (req) {
+        host = req.headers.host
+    }
+
+    return{
+        props: {
+            host,
+        },
+    }
+}

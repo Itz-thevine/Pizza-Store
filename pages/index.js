@@ -6,7 +6,8 @@ import { AddButton } from '../components/AddButton'
 import Classlist from '../components/Classlist'
 import Featured from '../components/Featured'
 
-export default function Home({pizzaList, admin}) {
+export default function Home({pizzaList, admin, host}) {
+  console.log(host)
   const [close, setClose] = useState(true);
   return (
     <>
@@ -36,18 +37,26 @@ export default function Home({pizzaList, admin}) {
 }
 
 export const getServerSideProps = async (ctx) => {
-  const myCookie = ctx.req?.cookies || '';
+  const { req, query, res, asPath, pathname } = ctx;
+
+  const myCookie = req?.cookies || '';
   let admin = false;
 
   if(myCookie.token === process.env.TOKEN){
     admin = true;
   }
+  
+  let host = '';
+  if (req) {
+    host = req.headers.host // will give you localhost:3000
+  }
 
-  const res  = await axios.get("http://localhost:3005/api/products");
+  const resq  = await axios.get(`http://${host}/api/products`);
   return{
     props: {
-      pizzaList: res.data,  
-      admin 
+      pizzaList: resq.data,  
+      admin,
+      host, 
     },
   };
 }

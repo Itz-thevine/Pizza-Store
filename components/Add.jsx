@@ -4,7 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 
-export const Add = ({setClose}) => {
+export const Add = ({setClose, host}) => {
     const [file, setFile] = useState(null);
     const [title, setTitle] = useState(null);
     const [desc, setDesc] = useState(null);
@@ -42,7 +42,7 @@ export const Add = ({setClose}) => {
             img: url,
         }
 
-        await axios.post('http://localhost:3005/api/products', newProduct)
+        await axios.post(`http://${host}/api/products`, newProduct)
         setClose(true)
     } catch (error) {
         console.log(error)
@@ -119,4 +119,20 @@ export const Add = ({setClose}) => {
         </div>
     </div>
   )
+}
+
+export const getServerSideProps = async (context)=>{
+    const {req} = context
+
+    let host
+    if(req){
+        host = req.headers.host
+    }
+
+    return{
+        props:{
+            host,
+        },
+    }
+
 }

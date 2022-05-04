@@ -3,7 +3,8 @@ import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import styles from '../../styles/login.module.css'
 
-const Login = () => {
+const Login = ({host}) => {
+    console.log(host)
     const [username, setUsername] = useState(null)
     const [password, setPassword] = useState(null)
     const [error, setError] = useState(false)
@@ -11,7 +12,7 @@ const Login = () => {
 
     const handleClick = async () => {
         try {
-            await axios.post('http://localhost:3005/api/login', {username, password})
+            await axios.post(`http://${host}/api/login`, {username, password})
             router.push('/admin')
         } catch (error) {
             console.log(error)
@@ -45,3 +46,17 @@ const Login = () => {
 }
 
 export default Login
+
+export const getServerSideProps = async ({req}) => {
+    
+    let host 
+    if(req){
+        host = req.headers.host
+    }
+
+    return{
+        props: {
+            host,
+        },
+    }
+}
