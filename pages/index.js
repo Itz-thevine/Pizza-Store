@@ -7,7 +7,7 @@ import Classlist from '../components/Classlist'
 import Featured from '../components/Featured'
 
 export default function Home({pizzaList, admin, host}) {
-  console.log(host)
+ 
   const [close, setClose] = useState(true);
   return (
     <>
