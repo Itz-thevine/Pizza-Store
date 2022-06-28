@@ -56,7 +56,7 @@ export const getServerSideProps = async (ctx) => {
   const resq  = await axios.get(`http://${host}/api/products`);
   return{
     props: {
-      pizzaList: resq.data,  
+      pizzaList: resq.data || '',  
       admin,
       host, 
     },
