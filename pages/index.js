@@ -48,8 +48,10 @@ export const getServerSideProps = async (ctx) => {
   
   let host = '';
   if (req) {
-    host = req.headers.host // will give you localhost:3000
+    host = req.headers.host // will give you localhost:3005
   }
+
+  console.log(host)
 
   const resq  = await axios.get(`http://${host}/api/products`);
   return{
